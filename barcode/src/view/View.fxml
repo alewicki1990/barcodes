@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewController">
+   <children>
+      <SplitPane dividerPositions="0.75" layoutX="435.0" layoutY="192.0" prefHeight="549.0" prefWidth="983.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <SplitPane dividerPositions="0.6" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+              <items>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="fullImageImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fx:id="barcodeImageImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+              </items>
+            </SplitPane>
+            <VBox fx:id="menuPanelVBox" alignment="CENTER" prefHeight="613.0" prefWidth="288.0">
+               <children>
+                  <Label text="Select file with barcode image">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></Label>
+                  <Button fx:id="chooseFileButton" mnemonicParsing="false" onAction="#chooseFile" prefHeight="25.0" prefWidth="163.0" text="Choose File">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></Button>
+                  <Label text="Filepath">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <TextField fx:id="filepathTextField" alignment="TOP_LEFT" editable="false" />
+                  <Label text="Filename">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <TextField fx:id="filenameTextField" alignment="CENTER" editable="false" />
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <Label text="Choose barcode type">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin></Label>
+                  <ChoiceBox fx:id="barcodeTypeChoiceBox" disable="true" prefHeight="25.0" prefWidth="418.0" />
+                  <Label text="Min difference between white and black bars">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="minDiffBetweenBarsTextField" alignment="CENTER" disable="true" editable="false" />
+                  <Label text="Max difference between white and black bars">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="maxDiffBetweenBarsTextField" alignment="CENTER" disable="true" editable="false" />
+                  <Button fx:id="getDataFromBarcodeButton" disable="true" mnemonicParsing="false" onAction="#findAndTranslateBarcode" text="Find and Translate barcode">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <Label text="Data With Checksum and Asterisks">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin></Label>
+                  <TextField fx:id="dataFullTextField" alignment="CENTER" editable="false" />
+                  <Label text="Checksum">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="checksumTextField" alignment="CENTER" editable="false" />
+                  <Label text="Plain Data">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Label>
+                  <TextField fx:id="dataPlainTextField" alignment="CENTER" editable="false" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
