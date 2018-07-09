@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @author alewicki
  *
  */
-public class Barcode {
+public class BarcodeCode39 {
 	// W - long black
 	// N - short black
 	// w - long white
@@ -172,7 +172,7 @@ public class Barcode {
 	 * @version 1.0
 	 * @exception IllegalArgumentException
 	 */
-	public Barcode(String uncodedData) throws IllegalArgumentException{
+	public BarcodeCode39(String uncodedData) throws IllegalArgumentException{
 		//countChars();
 		checkIfStringHasTwoAster(uncodedData);
 		checkIfChecksumIsRight(uncodedData);

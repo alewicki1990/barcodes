@@ -15,12 +15,12 @@ public class Scanner {
 	private int hFullImgBarcodeEndPoint;
 	private int vFullImgBarcodeStartPoint;
 	private int vFullImgBarcodeEndPoint;
-	private int thinBarLenght;
-	private int thickBarLenght;
+	private int thinBarLength;
+	private int thickBarLength;
 	private int oneLetterPixelLength;
 	private double minBarsWidthDiff;
 	private double maxBarsWidthDiff;
-	Barcode barcode;
+	BarcodeCode39 barcode;
 
 	// double barcodeImageWidth;
 	// double barcodeImageHeight;
@@ -40,7 +40,7 @@ public class Scanner {
 		//checkIfBarsWidthsAreProper();
 		
 		String signal = deleteWhiteShortBarSeparatorFilter(decodeBars(barcodeImage.getPixelReader(), barcodeImage));
-		barcode = new Barcode(signal);
+		barcode = new BarcodeCode39(signal);
 	}
 
 	public Image getBarcodeImage() {
@@ -195,13 +195,13 @@ public class Scanner {
 
 	private char getBarName(int barWidth, String color) throws IllegalArgumentException {
 
-		if (barWidth == thickBarLenght & color.equals("Black"))
+		if (barWidth == thickBarLength & color.equals("Black"))
 			return 'W';
-		else if (barWidth == thinBarLenght & color.equals("Black"))
+		else if (barWidth == thinBarLength & color.equals("Black"))
 			return 'N';
-		else if (barWidth == thickBarLenght & color.equals("White"))
+		else if (barWidth == thickBarLength & color.equals("White"))
 			return 'w';
-		else if (barWidth == thinBarLenght & color.equals("White"))
+		else if (barWidth == thinBarLength & color.equals("White"))
 			return 'n';
 		else
 			throw new IllegalArgumentException("Bad bar width.");
@@ -212,22 +212,22 @@ public class Scanner {
 		while (isPixelDark(pixelReader, index, 0))
 			index++;
 
-		thinBarLenght = index;
-		System.out.println("ciekie: " + thinBarLenght);
+		thinBarLength = index;
+		System.out.println("ciekie: " + thinBarLength);
 
 		while (isPixelBright(pixelReader, index, 0))
 			index++;
 
-		thickBarLenght = index - thinBarLenght;
-		System.out.println("grube: " + thickBarLenght);
+		thickBarLength = index - thinBarLength;
+		System.out.println("grube: " + thickBarLength);
 
 		// System.out.println("Szerokosc:" + barcodeImage.getWidth() + "
 		// Grubosc: " + barcodeImage.getHeight());
-		oneLetterPixelLength = (3 * thickBarLenght) + (6 * thinBarLenght);
+		oneLetterPixelLength = (3 * thickBarLength) + (6 * thinBarLength);
 	}
 	
 	private void checkIfBarsWidthsAreProper() throws IllegalArgumentException {
-		double realDiff =thickBarLenght/thinBarLenght;
+		double realDiff =thickBarLength/thinBarLength;
 		
 		
 		if(realDiff>maxBarsWidthDiff | realDiff<minBarsWidthDiff)
